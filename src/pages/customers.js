@@ -1,10 +1,12 @@
 import React from "react";
 import Layout from "../components/Layout";
 
-export default function Home() {
+const customers = () => {
   return (
     <Layout>
-      <h1>This text belongs to index page</h1>
+      <h1>Customers Listing</h1>
     </Layout>
   );
-}
+};
+
+export default customers;
