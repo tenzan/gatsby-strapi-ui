@@ -6,7 +6,6 @@ export default function Layout({ children }) {
   return (
     <>
       <Navbar />
-      This text comes from Layout component
       {children}
       <Footer />
     </>

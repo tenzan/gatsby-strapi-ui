@@ -1,24 +1,32 @@
 import React from "react";
 import { graphql } from "gatsby";
+import Image from "gatsby-image";
 import Layout from "../components/Layout";
 import Products from "../components/Products";
 
-const products = ({ data, pageContext }) => {
-  const products = data.products.nodes;
+export default function products({ data: { products } }) {
   console.log(products);
   return (
     <Layout>
-      <Products products={products} title="products">
-        {products}
-      </Products>
+      <div>
+        <ul>
+          {products.nodes.map(product => (
+            <li key={product.id}>
+              {product.name}
+              <Image fluid={product.media.childImageSharp.fluid} />
+            </li>
+          ))}
+        </ul>
+      </div>
     </Layout>
   );
-};
+}
 
 export const query = graphql`
   {
     products: allStrapiProducts {
       nodes {
+        id
         name
         media {
           childImageSharp {
@@ -31,5 +39,3 @@ export const query = graphql`
     }
   }
 `;
-
-export default products;
